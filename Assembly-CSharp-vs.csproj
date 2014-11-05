@@ -46,7 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Bomb.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerGUI.cs" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>/Users/lipeilin/Documents/UnityProjects/LMC2730_FINAL/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>

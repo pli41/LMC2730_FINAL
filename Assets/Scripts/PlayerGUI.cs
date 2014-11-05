@@ -10,40 +10,51 @@ public class PlayerGUI : MonoBehaviour {
 	private Rect HealthBarPosition;
 	public Texture2D EnergyBar;
 	private Rect EnergyBarPosition;
+	public Texture2D DueBomb;
 
 	private float HealthPercentage;
 	private float EnergyPercentage;
 
+	private PlayerController Player;
 
 	// Use this for initialization
 	void Start () {
-		
+		Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		PlayerController Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+		CalculateBars ();
 
+
+
+	}
+
+
+
+
+	void CalculateBars(){
 		if(Player.HealthPoint > 0){
 			HealthPercentage = Player.HealthPoint / 100f;
 		}
 		else{
 			HealthPercentage = 0;
 		}
-
+		
 		if(Player.EnergyPoint > 0){
 			EnergyPercentage = Player.EnergyPoint / 100f;
 		}
 		else{
 			EnergyPercentage = 0;
 		}
-
 	}
 
 	void OnGUI() {
 		DrawDescription ();
 		DrawFrames ();
 		DrawBars ();
+		DrawBombs ();
+		DrawGPA ();
 	}
 
 	//Descriptions for 2 status bars
@@ -82,5 +93,38 @@ public class PlayerGUI : MonoBehaviour {
 		EnergyBarPosition.height = FramePosition2.height - 2;
 		GUI.DrawTexture (EnergyBarPosition, EnergyBar);
 	}
+
+	void DrawBombs(){
+		if(Player.bombs.Count > 0){
+			int row = 0;
+			int rowCount = 0;
+			for(int i = 0;i < Player.bombs.Count; i++ ){
+				//Draw bombs
+
+				Rect BombPosition = new Rect(800 + rowCount*50, 100 + row*70, 40, 20);
+				GUI.DrawTexture(BombPosition, DueBomb);
+
+				//Draw bombs' information
+				Rect TextPosition = new Rect(800 + rowCount*50, 100 + row*70 + 30, 40, 40);
+				Bomb thisBomb = (Bomb)Player.bombs[i];
+				GUI.Label(TextPosition, thisBomb.CurrentTime.ToString());
+				rowCount ++;
+				if(rowCount > 5){
+					rowCount = 0;
+					row++;
+				}
+			}
+		}	    
+	}
+
+
+
+	void DrawGPA(){
+		GUI.Label (new Rect(Screen.width/2 - 80, 50, 160, 100), "GPA : " + Player.GPA);
+	}
+
+
+
+	   
 
 }
