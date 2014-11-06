@@ -3,6 +3,10 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	private int MaxChecks = 5;
+
+	private bool ReadyForGoal;
+	public int CheckPoints;
 	public float HealthPoint;
 	public float EnergyPoint;
 	public float GPA;
@@ -14,6 +18,8 @@ public class PlayerController : MonoBehaviour {
 		GPA = 4.0f;
 		HealthPoint = 100f;
 		EnergyPoint = 100f;
+		CheckPoints = 0;
+		ReadyForGoal = false;
 	}
 	
 	// Update is called once per frame
@@ -29,7 +35,19 @@ public class PlayerController : MonoBehaviour {
 			CreateBomb();
 		}
 		UpdateBombs ();
-		 
+		CheckCheckPoints ();
+
+	}
+
+	void CheckCheckPoints(){
+		if(CheckPoints == MaxChecks){
+			ReadyForGoal = true;
+			Debug.Log ("Ready");
+		}
+	}
+
+	public bool getReadyForGoal(){
+		return ReadyForGoal;
 	}
 
 	void CreateBomb(){
