@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	private int MaxChecks = 5;
 
+	public bool locked;
 	private bool ReadyForGoal;
 	public int CheckPoints;
 	public float HealthPoint;

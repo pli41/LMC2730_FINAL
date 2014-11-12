@@ -1,7 +1,6 @@
 // This makes the character turn to face the current movement speed per default.
 var autoRotate : boolean = true;
 var maxRotationSpeed : float = 360;
-
 private var motor : CharacterMotor;
 
 // Use this for initialization
@@ -63,6 +62,3 @@ function ConstantSlerp (from : Vector3, to : Vector3, angle : float) {
 	return Vector3.Slerp(from, to, value);
 }
 
-// Require a character controller to be attached to the same game object
-@script RequireComponent (CharacterMotor)
-@script AddComponentMenu ("Character/Platform Input Controller")

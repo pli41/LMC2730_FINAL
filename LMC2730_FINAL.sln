@@ -7,6 +7,8 @@ Project("{B25C5129-D274-4F14-AE5E-908ABAB235A6}") = "LMC2730_FINAL", "Assembly-C
 EndProject
 Project("{B25C5129-D274-4F14-AE5E-908ABAB235A6}") = "LMC2730_FINAL", "Assembly-UnityScript-firstpass.unityproj", "{1B97CCFE-9C5A-1E11-3885-DB528661B03E}"
 EndProject
+Project("{B25C5129-D274-4F14-AE5E-908ABAB235A6}") = "LMC2730_FINAL", "Assembly-UnityScript.unityproj", "{04AD032F-8C4D-3132-B546-7B672B6BF9AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +27,15 @@ Global
 		{1B97CCFE-9C5A-1E11-3885-DB528661B03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B97CCFE-9C5A-1E11-3885-DB528661B03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B97CCFE-9C5A-1E11-3885-DB528661B03E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AD032F-8C4D-3132-B546-7B672B6BF9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AD032F-8C4D-3132-B546-7B672B6BF9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AD032F-8C4D-3132-B546-7B672B6BF9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AD032F-8C4D-3132-B546-7B672B6BF9AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																				GlobalSection(MonoDevelopProperties) = preSolution
+																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

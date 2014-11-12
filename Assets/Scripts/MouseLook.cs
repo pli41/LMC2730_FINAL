@@ -27,14 +27,15 @@ public class MouseLook : MonoBehaviour {
 
 	public float minimumY = -60F;
 	public float maximumY = 60F;
-	
+
+	private PlayerController Player;
 	public bool locked;
 
 	float rotationY = 0F;
 
 	void Update ()
 	{
-
+		locked = Player.locked;
 		if(!locked){
 			if (axes == RotationAxes.MouseXAndY)
 			{
@@ -61,6 +62,7 @@ public class MouseLook : MonoBehaviour {
 	
 	void Start ()
 	{
+		Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 		// Make the rigid body not change rotation
 		if (GetComponent<Rigidbody>())
 			GetComponent<Rigidbody>().freezeRotation = true;
