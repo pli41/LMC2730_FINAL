@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class CheckPoint : MonoBehaviour {
+	private GameObject[] bookWalls;
+	public int checkPointNum;
 	public GameObject QUIZ1;
 	private Rect textRect;
 	private Rect buttonStartRect;
@@ -15,6 +17,7 @@ public class CheckPoint : MonoBehaviour {
 	private bool inExam;
 	// Use this for initialization
 	void Start () {
+		bookWalls = GameObject.FindGameObjectsWithTag ("BookWall");
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		exam = false;
 		examRect1 = new Rect (400, 100, 500, 500);
@@ -44,17 +47,17 @@ public class CheckPoint : MonoBehaviour {
 		foreach (CheckPoint checkPoint in checkPoints) {
 			checkPoint.exam = false;
 		}
+		BookWall bookWall = bookWalls [checkPointNum].GetComponent<BookWall> ();
+		bookWall.explode = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.G)){
 			EndExam ();
-			Debug.Log("AAA");
 		}
 		if(Input.GetKeyDown(KeyCode.H)){
 			StartExam();
-			Debug.Log("AAA");
 		}
 
 		if(game1.game){
@@ -67,10 +70,6 @@ public class CheckPoint : MonoBehaviour {
 		if(game1.gameEnd){
 			EndExam();
 		}
-
-		Debug.Log (checkPoints.Length);
-		Debug.Log ("Exam = " + exam );
-		Debug.Log ("locked = " + player.locked );
 	}
 
 	void OnTriggerEnter(Collider other){
