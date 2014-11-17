@@ -6,14 +6,11 @@ public class PlayerGUI : MonoBehaviour {
 	public Texture2D StatusFrame;
 	private Rect FramePosition1;
 	private Rect FramePosition2;
-	public Texture2D HealthBar;
-	private Rect HealthBarPosition;
-	public Texture2D EnergyBar;
-	private Rect EnergyBarPosition;
+	public Texture2D StressBar;
+	private Rect StressBarPosition;
 	public Texture2D DueBomb;
 
-	private float HealthPercentage;
-	private float EnergyPercentage;
+	private float StressPercentage;
 
 	private PlayerController Player;
 
@@ -25,28 +22,22 @@ public class PlayerGUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CalculateBars ();
-
-
-
 	}
 
 
 
 
 	void CalculateBars(){
-		if(Player.HealthPoint > 0){
-			HealthPercentage = Player.HealthPoint / 100f;
+		if(Player.StressPoint > 0){
+			StressPercentage = Player.StressPoint / 100f;
+		}
+		else if(Player.StressPoint > 100){
+			StressPercentage = 1;
 		}
 		else{
-			HealthPercentage = 0;
+			StressPercentage = 0;
 		}
-		
-		if(Player.EnergyPoint > 0){
-			EnergyPercentage = Player.EnergyPoint / 100f;
-		}
-		else{
-			EnergyPercentage = 0;
-		}
+
 	}
 
 	void OnGUI() {
@@ -69,29 +60,17 @@ public class PlayerGUI : MonoBehaviour {
 		FramePosition1.width = 200;
 		FramePosition1.height = 30;
 		GUI.DrawTexture (FramePosition1, StatusFrame);
-		//Draw Frame for Energy bar
-		FramePosition2.x = 15;
-		FramePosition2.y = 100;
-		FramePosition2.width = 200;
-		FramePosition2.height = 30;
-		GUI.DrawTexture (FramePosition2, StatusFrame);
 
 
 	}
 
 	void DrawBars(){
 		//Draw Health bar
-		HealthBarPosition.x = FramePosition1.x + 1;
-		HealthBarPosition.y = FramePosition1.y + 1;
-		HealthBarPosition.width = (FramePosition1.width - 2) * HealthPercentage;
-		HealthBarPosition.height = FramePosition1.height - 2;
-		GUI.DrawTexture (HealthBarPosition, HealthBar);
-		//Draw Health bar
-		EnergyBarPosition.x = FramePosition2.x + 1;
-		EnergyBarPosition.y = FramePosition2.y + 1;
-		EnergyBarPosition.width = (FramePosition2.width - 2) * EnergyPercentage;
-		EnergyBarPosition.height = FramePosition2.height - 2;
-		GUI.DrawTexture (EnergyBarPosition, EnergyBar);
+		StressBarPosition.x = FramePosition1.x + 1;
+		StressBarPosition.y = FramePosition1.y + 1;
+		StressBarPosition.width = (FramePosition1.width - 2) * StressPercentage;
+		StressBarPosition.height = FramePosition1.height - 2;
+		GUI.DrawTexture (StressBarPosition, StressBar);
 	}
 
 	void DrawBombs(){

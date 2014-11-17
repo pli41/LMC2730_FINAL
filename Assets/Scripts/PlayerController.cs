@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour {
 	public bool locked;
 	private bool ReadyForGoal;
 	public int CheckPoints;
-	public float HealthPoint;
-	public float EnergyPoint;
+	public float StressPoint;
 	public float GPA;
 	public ArrayList bombs;
 
@@ -17,8 +16,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		bombs = new ArrayList ();
 		GPA = 4.0f;
-		HealthPoint = 100f;
-		EnergyPoint = 100f;
+		StressPoint = 100f;
 		CheckPoints = 0;
 		ReadyForGoal = false;
 	}
@@ -26,10 +24,10 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown("1")){
-			HealthPoint -= 10f;
+			StressPoint -= 10f;
 		}
 		if(Input.GetKeyDown("2")){
-			EnergyPoint -= 10f;
+			StressPoint += 10f;
 		}
 
 		if(Input.GetKeyDown("3")){
