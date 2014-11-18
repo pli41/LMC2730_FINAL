@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
+	void nextCheckPoint(){
+
+	}
+
 	void CheckCheckPoints(){
 		if(CheckPoints == MaxChecks){
 			ReadyForGoal = true;

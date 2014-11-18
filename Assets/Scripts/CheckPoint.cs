@@ -11,13 +11,17 @@ public class CheckPoint : MonoBehaviour {
 	private Rect examRect1;
 	private PlayerController player;
 	public bool exam;
+	public GameObject bookWall;
+	private BookWall thisBookWall;
 	private CheckPoint[] checkPoints;
 	private GameObject[] gameobjects;
 	private MINIgame1 game1;
 	private bool inExam;
 	// Use this for initialization
+
+
 	void Start () {
-		bookWalls = GameObject.FindGameObjectsWithTag ("BookWall");
+		thisBookWall = bookWall.GetComponent<BookWall> ();
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		exam = false;
 		examRect1 = new Rect (400, 100, 500, 500);
@@ -47,19 +51,11 @@ public class CheckPoint : MonoBehaviour {
 		foreach (CheckPoint checkPoint in checkPoints) {
 			checkPoint.exam = false;
 		}
-		BookWall bookWall = bookWalls [checkPointNum].GetComponent<BookWall> ();
-		bookWall.explode = true;
+		thisBookWall.explode = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.G)){
-			EndExam ();
-		}
-		if(Input.GetKeyDown(KeyCode.H)){
-			StartExam();
-		}
-
 		if(game1.game){
 			inExam = true;
 		}

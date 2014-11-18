@@ -9,7 +9,7 @@ public class PlayerGUI : MonoBehaviour {
 	public Texture2D StressBar;
 	private Rect StressBarPosition;
 	public Texture2D DueBomb;
-
+	public GameObject BookWall;
 	private float StressPercentage;
 
 	private PlayerController Player;
