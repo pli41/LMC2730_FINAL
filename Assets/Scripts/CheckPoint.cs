@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CheckPoint : MonoBehaviour {
-	private GameObject[] bookWalls;
+	public bool activated;
 	public int checkPointNum;
 	public GameObject QUIZ1;
 	private Rect textRect;
@@ -12,6 +12,7 @@ public class CheckPoint : MonoBehaviour {
 	private PlayerController player;
 	public bool exam;
 	public GameObject bookWall;
+	public GameObject nextCheckPoint;
 	private BookWall thisBookWall;
 	private CheckPoint[] checkPoints;
 	private GameObject[] gameobjects;
@@ -21,6 +22,7 @@ public class CheckPoint : MonoBehaviour {
 
 
 	void Start () {
+		activated = false;
 		thisBookWall = bookWall.GetComponent<BookWall> ();
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		exam = false;
@@ -42,37 +44,56 @@ public class CheckPoint : MonoBehaviour {
 	}
 
 	void StartExam(){
-		foreach (CheckPoint checkPoint in checkPoints) {
-			checkPoint.exam = true;
+//		foreach (CheckPoint checkPoint in checkPoints) {
+//			checkPoint.exam = true;
+//		}
+		if(activated){
+			exam = true;
 		}
 	}
 
 	void EndExam(){
-		foreach (CheckPoint checkPoint in checkPoints) {
-			checkPoint.exam = false;
+//		foreach (CheckPoint checkPoint in checkPoints) {
+//			checkPoint.exam = false;
+//		}
+		if(activated){
+			exam = false;
+			Debug.Log (checkPointNum + " exploded ");
+			thisBookWall.explode = true;
+			if(player.CheckPoints<5){
+				CheckPoint CP2 = nextCheckPoint.GetComponent<CheckPoint> ();
+				CP2.activated = true;
+			}
 		}
-		thisBookWall.explode = true;
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if(game1.game){
-			inExam = true;
-		}
-		else{
-			inExam = false;
-		}
+		if(activated){
+			if(game1.game){
+				inExam = true;
+			}
+			else{
+				inExam = false;
+			}
 
-		if(game1.gameEnd){
-			EndExam();
+			if(game1.gameEnd){
+				EndExam();
+				game1.gameEnd = false;
+			}
 		}
+		Debug.Log (checkPointNum + " status: " + activated);
+
 	}
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player"){
-			StartExam();
-			player.CheckPoints ++;
-			deactivate();
+			if(activated){
+				StartExam();
+				player.CheckPoints ++;
+				deactivate();
+			}
 		}
 	}
 
@@ -82,16 +103,18 @@ public class CheckPoint : MonoBehaviour {
 	}	
 
 	void OnGUI(){
-		if(exam && !inExam){
-			player.locked = true;
-			GUI.color = Color.red;
-			GUI.Window(0, examRect1, showExam, "Exam1");
-		}
-		else if(exam && inExam){
-			player.locked = true;
-		}
-		else{
-			player.locked = false;
+		if(activated){
+			if(exam && !inExam){
+				player.locked = true;
+				GUI.color = Color.red;
+				GUI.Window(0, examRect1, showExam, "Exam1");
+			}
+			else if(exam && inExam){
+				player.locked = true;
+			}
+			else{
+				player.locked = false;
+			}
 		}
 	}
 

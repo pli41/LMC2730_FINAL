@@ -51,6 +51,10 @@
      <Compile Include="Assets\Scripts\CheckPoint.cs" />
      <Compile Include="Assets\Scripts\Goal.cs" />
      <Compile Include="Assets\Scripts\MINIgame1.cs" />
+     <Compile Include="Assets\Scripts\MINIgame2.cs" />
+     <Compile Include="Assets\Scripts\MINIgame3.cs" />
+     <Compile Include="Assets\Scripts\MINIgame4.cs" />
+     <Compile Include="Assets\Scripts\MINIgame5.cs" />
      <Compile Include="Assets\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerGUI.cs" />

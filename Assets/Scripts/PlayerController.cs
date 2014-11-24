@@ -4,16 +4,18 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	private int MaxChecks = 5;
-
 	public bool locked;
 	private bool ReadyForGoal;
 	public int CheckPoints;
 	public float StressPoint;
 	public float GPA;
 	public ArrayList bombs;
-
+	public GameObject firstCheckPoint;
+	private CheckPoint CP1;
 	// Use this for initialization
 	void Start () {
+		CP1 = firstCheckPoint.GetComponent<CheckPoint> ();
+		CP1.activated = true;
 		bombs = new ArrayList ();
 		GPA = 4.0f;
 		StressPoint = 100f;
