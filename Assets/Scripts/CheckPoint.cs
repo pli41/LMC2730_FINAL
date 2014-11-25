@@ -61,6 +61,7 @@ public class CheckPoint : MonoBehaviour {
 			Debug.Log (checkPointNum + " exploded ");
 			thisBookWall.explode = true;
 			if(player.CheckPoints<5){
+				activated = false;
 				CheckPoint CP2 = nextCheckPoint.GetComponent<CheckPoint> ();
 				CP2.activated = true;
 			}
