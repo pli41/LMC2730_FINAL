@@ -40,6 +40,9 @@ public class MINIgame1 : MonoBehaviour {
 			GUI.color = Color.green;
 			GUI.Window(1, readPanel, showReadPanel, "Read");
 		}
+		else{
+			gameEnd = false;
+		}
 	}
 
 	void showWritePanel(int windowID){

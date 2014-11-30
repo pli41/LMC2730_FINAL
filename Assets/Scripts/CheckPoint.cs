@@ -56,15 +56,21 @@ public class CheckPoint : MonoBehaviour {
 //		foreach (CheckPoint checkPoint in checkPoints) {
 //			checkPoint.exam = false;
 //		}
-		if(activated){
-			exam = false;
+		exam = false;
+
+		if(activated&&game1.gameEnd){
+			player.CheckPoints ++;
 			Debug.Log (checkPointNum + " exploded ");
 			thisBookWall.explode = true;
 			if(player.CheckPoints<5){
 				activated = false;
 				CheckPoint CP2 = nextCheckPoint.GetComponent<CheckPoint> ();
 				CP2.activated = true;
+				deactivate();
 			}
+		}
+		else{
+			reactivate();
 		}
 
 	}
@@ -84,16 +90,14 @@ public class CheckPoint : MonoBehaviour {
 				game1.gameEnd = false;
 			}
 		}
-		Debug.Log (checkPointNum + " status: " + activated);
 
+		Debug.Log (checkPointNum + " status: " + activated);
 	}
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Player"){
 			if(activated){
 				StartExam();
-				player.CheckPoints ++;
-				deactivate();
 			}
 		}
 	}
@@ -102,6 +106,11 @@ public class CheckPoint : MonoBehaviour {
 		renderer.enabled = false;
 		collider.enabled = false;
 	}	
+
+	void reactivate(){
+		renderer.enabled = true;
+		collider.enabled = true;
+	}
 
 	void OnGUI(){
 		if(activated){
