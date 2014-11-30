@@ -1,21 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CheckPoint.cs">
     <Files>
-      <File FileName="Assets/Scripts/BookWall.cs" Line="33" Column="3" />
-      <File FileName="Assets/Scripts/CheckPoint.cs" Line="117" Column="27" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="22" Column="19" />
-      <File FileName="Assets/Scripts/MINIgame1.cs" Line="20" Column="30" />
+      <File FileName="Assets/Scripts/CheckPoint.cs" Line="93" Column="1" />
+      <File FileName="Assets/Scripts/BookWall.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CheckPoint.cs" Line="151" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MINIgame1.cs" Line="52" Column="19" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Scripts" expanded="True">
-              <Node name="CheckPoint.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
